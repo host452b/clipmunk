@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Clipmunk",
+  "version": "2.0.1",
+  "description": "100% local-first paste toolbox. Store text templates, paste anywhere with a click or hotkey. No cloud, no accounts, no tracking.",
+  "permissions": [
+    "storage",
+    "clipboardWrite",
+    "contextMenus",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Clipmunk – Paste Toolbox",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background/service-worker.js"
+  },
+  "commands": {
+    "copy-template-1": {
+      "suggested_key": { "default": "Ctrl+Shift+1", "mac": "Command+Shift+1" },
+      "description": "Copy template #1 to clipboard"
+    },
+    "copy-template-2": {
+      "suggested_key": { "default": "Ctrl+Shift+2", "mac": "Command+Shift+2" },
+      "description": "Copy template #2 to clipboard"
+    },
+    "copy-template-3": {
+      "suggested_key": { "default": "Ctrl+Shift+3", "mac": "Command+Shift+3" },
+      "description": "Copy template #3 to clipboard"
+    },
+    "copy-template-4": {
+      "suggested_key": { "default": "Ctrl+Shift+4", "mac": "Command+Shift+4" },
+      "description": "Copy template #4 to clipboard"
+    }
+  }
+}

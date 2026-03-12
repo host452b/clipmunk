@@ -1,55 +1,14 @@
-# miscellaneous
-*.class
-*.log
-*.pyc
-*.swp
+# OS
 .DS_Store
-.atom/
-.build/
-.buildlog/
-.history
-.svn/
-.swiftpm/
-migrate_working_dir/
+Thumbs.db
 
 # IDE
-*.iml
-*.ipr
-*.iws
 .idea/
 .vscode/
+*.iml
+*.swp
 
-# dart/flutter core
-.dart_tool/
-.packages
-.pub-cache/
-.pub/
-pubspec.lock
-
-# flutter generated
-.flutter-plugins
-.flutter-plugins-dependencies
-**/Flutter/ephemeral/
-**/generated_plugin_registrant.*
-**/GeneratedPluginRegistrant.*
-**/generated_plugins.cmake
-
-# build output
-/build/
-/coverage/
-**/doc/api/
-**/ios/Flutter/.last_build_id
-*.dSYM/
-
-# cocoapods
-**/Pods/
-**/Podfile.lock
-
-# symbolication & obfuscation
-app.*.symbols
-app.*.map.json
-
-# android (not used but keep for safety)
-/android/app/debug
-/android/app/profile
-/android/app/release
+# Chrome extension build artifacts
+*.crx
+*.pem
+*.zip

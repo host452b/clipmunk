@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=420">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app">
+    <!-- title bar -->
+    <header class="title-bar">
+      <div class="title-left">
+        <span class="led active cyan"></span>
+        <span class="title-text">CLIP·MUNK</span>
+        <span class="title-version" id="app-version"></span>
+      </div>
+      <nav class="tab-nav">
+        <button class="tab-btn active" data-tab="templates">
+          <span class="led-small"></span> TEMPLATES
+        </button>
+        <button class="tab-btn" data-tab="settings">
+          <span class="led-small"></span> SETTINGS
+        </button>
+      </nav>
+    </header>
+
+    <!-- templates view -->
+    <section id="view-templates" class="view">
+      <div class="toolbar">
+        <div class="search-wrap">
+          <input type="text" id="search-input" placeholder="search templates..." spellcheck="false">
+        </div>
+        <button class="retro-btn compact" id="btn-add">+ ADD</button>
+      </div>
+      <div id="template-list" class="template-list"></div>
+    </section>
+
+    <!-- settings view -->
+    <section id="view-settings" class="view hidden">
+      <div id="settings-content" class="settings-content"></div>
+    </section>
+
+    <!-- status bar -->
+    <footer class="status-bar">
+      <div class="status-left">
+        <span class="led active" id="status-led"></span>
+        <span id="status-text">READY</span>
+      </div>
+      <span id="template-count">0 STORED</span>
+    </footer>
+  </div>
+
+  <!-- toast container -->
+  <div id="toast-container"></div>
+
+  <!-- hidden file input for import -->
+  <input type="file" id="import-file" accept=".json">
+
+  <script src="popup.js"></script>
+</body>
+</html>

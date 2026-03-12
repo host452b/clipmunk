@@ -9,64 +9,26 @@ permissions:
   contents: write
 
 jobs:
-  build-macos:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-
-      - run: flutter pub get
-
-      - run: flutter build macos --release
-
-      - name: package macos app
-        run: |
-          cd build/macos/Build/Products/Release
-          ditto -c -k --keepParent clipmunk.app Clipmunk-macOS.zip
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Clipmunk-macOS
-          path: build/macos/Build/Products/Release/Clipmunk-macOS.zip
-
-  build-windows:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: subosito/flutter-action@v2
-        with:
-          channel: stable
-
-      - run: flutter pub get
-
-      - run: flutter build windows --release
-
-      - name: package windows app
-        run: Compress-Archive -Path build\windows\x64\runner\Release\* -DestinationPath Clipmunk-Windows.zip
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Clipmunk-Windows
-          path: Clipmunk-Windows.zip
-
   release:
-    needs: [build-macos, build-windows]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v4
-        with:
-          path: artifacts
+      - name: package chrome extension
+        run: |
+          zip Clipmunk-Chrome.zip \
+            manifest.json \
+            popup/popup.html \
+            popup/popup.css \
+            popup/popup.js \
+            background/service-worker.js \
+            icons/icon16.png \
+            icons/icon32.png \
+            icons/icon48.png \
+            icons/icon128.png
 
       - name: create github release
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
-          files: |
-            artifacts/Clipmunk-macOS/Clipmunk-macOS.zip
-            artifacts/Clipmunk-Windows/Clipmunk-Windows.zip
+          files: Clipmunk-Chrome.zip
